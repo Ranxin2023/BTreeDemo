@@ -10,17 +10,25 @@ class BTreeNode {
 private:
 	int degree;
 	vector<int>keys;
-	vector<BTreeNode*>children;
+	vector<BTreeNode_Ref>children;
+	int num_of_keys;
+	bool leaf;
 
 public:
+	BTreeNode(int, bool); 
+	void traverse();
 	BTreeNode_Ref search(int k);
+	void insert(int);
+	friend class BTree;
 };
 class BTree {
 private:
 	BTreeNode_Ref root;
 	int degree;
 public:
-	BTree();
+	BTree(int);
+	void traverse();
 	BTreeNode_Ref search(int k);
+	void insert(int k);
 };
 #endif // !BTREE_H
